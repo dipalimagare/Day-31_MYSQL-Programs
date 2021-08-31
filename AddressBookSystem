@@ -1,0 +1,444 @@
+Address Book System :-
+	
+	
+	
+	/*UC-1 = Ability to create a Address Book Service DB */
+	
+	
+	mysql> CREATE DATABASE AddressBook_Service;
+	Query OK, 1 row affected (0.17 sec)
+	
+	
+	mysql> SHOW DATABASES;
+	+---------------------+
+	| Database            |
+	+---------------------+
+	| addressbook_service |
+	| addressbook_system  |
+	| employee_payroll    |
+	| information_schema  |
+	| mysql               |
+	| payroll_service     |
+	| performance_schema  |
+	| person              |
+	| sakila              |
+	| student             |
+	| sys                 |
+	| world               |
+	+---------------------+
+	12 rows in set (0.06 sec)
+	
+	
+	mysql> USE AddressBook_Service;
+	Database changed
+	
+	
+	
+	/*UC-2 = Ability to create a Address Book Table with first and last names, address, city, state, zip, phone number and 	 email as its attributes 
+	*/
+	
+	
+	
+	mysql> CREATE TABLE AddressBook_Service
+	    -> (FirstName varchar(20) NOT NULL,
+	    -> LastName varchar(20) NOT NUll,
+	    -> Address varchar(30) NOT NULL,
+	    -> City varchar(20) NOT NULL,
+	    -> State varchar(20) NOT NULL,
+	    -> PhoneNum bigint NOT NULL,
+	    -> EmailId varchar(30) NOT NULL);
+	Query OK, 0 rows affected (2.10 sec)
+	
+	
+	mysql> SELECT * FROM AddressBook_Service;
+	Empty set (0.04 sec)
+	
+	
+	mysql> DESCRIBE AddressBook_Service;
+	+-----------+-------------+------+-----+---------+-------+
+	| Field     | Type        | Null | Key | Default | Extra |
+	+-----------+-------------+------+-----+---------+-------+
+	| FirstName | varchar(20) | NO   |     | NULL    |       |
+	| LastName  | varchar(20) | NO   |     | NULL    |       |
+	| Address   | varchar(30) | NO   |     | NULL    |       |
+	| City      | varchar(20) | NO   |     | NULL    |       |
+	| State     | varchar(20) | NO   |     | NULL    |       |
+	| PhoneNum  | bigint      | NO   |     | NULL    |       |
+	| EmailId   | varchar(30) | NO   |     | NULL    |       |
+	+-----------+-------------+------+-----+---------+-------+
+	7 rows in set (0.00 sec)
+	
+	
+	
+	
+	/*UC-3 = Ability to insert new Contacts to Address Book*/
+	
+	
+	
+	mysql> INSERT INTO AddressBook_Service
+	    -> (FirstName, LastName, Address, City, State, Zip, PhoneNum, EmailId)
+	    -> VALUES
+	    -> ('Abhi', 'Jadhav', 'Karnik_Nagar', 'Solapur', 'Maharashtra', 413006, 9812
+	345670, 'jeet.abhi@gmail.com');
+	Query OK, 1 row affected (0.15 sec)
+	
+	
+	mysql> INSERT INTO AddressBook_Service
+	    -> (FirstName, LastName, Address, City, State, Zip, PhoneNum, EmailId)
+	    -> VALUES
+	    -> ('Anjali', 'Shinde', 'Swami_Chowk', 'Akkalkot', 'Maharashtra', 413216, 99
+	88776655, 'anjali.shinde@gmail.com');
+	Query OK, 1 row affected (0.12 sec)
+	
+	
+	mysql> INSERT INTO AddressBook_Service
+	    -> (FirstName, LastName, Address, City, State, Zip, PhoneNum, EmailId)
+	    -> VALUES
+	    -> ('Dipali', 'Magare', 'Amalner', 'Amalner', 'Maharashtra', 425401, 7788991122,
+	 ‘dipali.magare@gmail.com');
+	Query OK, 1 row affected (0.15 sec)
+	
+	
+	mysql> SELECT * FROM AddressBook_Service;
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	| FirstName | LastName | Type   | Address      | City     | State       | Zip
+	 | PhoneNum   | EmailId                 |
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	| Abhi      | Jadhav   | Family | Karnik_Nagar | Solapur  | Maharashtra | 413006
+	 | 9812345670 | jeet.abhi@gmail.com     |
+	| Anjali    | Shinde   | Family | Swami_Chowk  | Akkalkot | Maharashtra | 413216
+	 | 9988776655 | anjali.shinde@gmail.com |
+	| Anuradha  | Salunkhe | Family | Avanti_nagar | Solapur  | Maharashtra | 411018
+	 | 8877665544 | anu.salunkhe@gmail.com  |
+	| Dipali    | Magare   | Myself | Amalner       | Amalner     | Maharashtra | 425401
+	 | 7788991122 | dipali.magare@gmail.com |
+	| Abhi      | Jadhav   | NULL   | Karnik_Nagar | Solapur  | Maharashtra | 413006
+	 | 9812345670 | jeet.abhi@gmail.com     |
+	| Anjali    | Shinde   | NULL   | Swami_Chowk  | Akkalkot | Maharashtra | 413216
+	 | 9988776655 | anjali.shinde@gmail.com |
+	| Dipali    | Magare   | Myself | Amalner       | Amalner     | Maharashtra | 425401
+	 | 7788991122 | dipali.magare@gmail.com |
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	7 rows in set (0.00 sec)
+	
+	
+	
+	
+	/*UC-4 = Ability to edit existing contact person using their name*/
+	
+	
+	
+	mysql> UPDATE AddressBook_Service SET PhoneNum=9012345670 WHERE FirstName='Aparn
+	a';
+	Query OK, 1 row affected (0.15 sec)
+	Rows matched: 1  Changed: 1  Warnings: 0
+	
+	
+	mysql> INSERT INTO AddressBook_Service
+	    -> (FirstName, LastName, Address, City, State, Zip, PhoneNum, EmailId)
+	    -> VALUES
+	    -> ('Anjali', 'Shinde', 'Swami_Chowk', 'Akkalkot', 'Maharashtra', 413216, 99
+	88776655, 'anjali.shinde@gmail.com');
+	Query OK, 1 row affected (0.14 sec)
+	
+	
+	mysql> INSERT INTO AddressBook_Service
+	    -> (FirstName, LastName, Address, City, State, Zip, PhoneNum, EmailId)
+	    -> VALUES
+	    -> ('Anuradha', 'Salunkhe', 'Avanti_nagar', 'Solapur', 'Maharashtra', 411018
+	, 8877665544, 'anu.salunkhe@gmail.com');
+	Query OK, 1 row affected (0.25 sec)
+	
+	
+	mysql> SELECT * FROM AddressBook_Service;
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+---------------------------+
+	| FirstName | LastName | Address      | City     | State       | Zip    | PhoneN
+	um   | EmailId                   |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+---------------------------+
+	|Dipali    |Magare   | Viva_Sarovar | Pune     | Mharashtra  | 411047 | 901234
+	5670 | magare.dipali @gmail.com |
+	| Abhi      | Jadhav   | Karnik_Nagar | Solapur  | Maharashtra | 413006 | 981234
+	5670 | jeet.abhi@gmail.com       |
+	| Anjali    | Shinde   | Swami_Chowk  | Akkalkot | Maharashtra | 413216 | 998877
+	6655 | anjali.shinde@gmail.com   |
+	| Anuradha  | Salunkhe | Avanti_nagar | Solapur  | Maharashtra | 411018 | 887766
+	5544 | anu.salunkhe@gmail.com    |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+---------------------------+
+	4 rows in set (0.00 sec)
+	
+	
+	
+	
+	/*UC-5 = Ability to delete person using person's name*/
+	
+	
+	mysql> DELETE FROM AddressBook_Service WHERE FirstName='Dipali';
+	Query OK, 1 row affected (0.08 sec)
+	
+	
+	mysql> SELECT * FROM AddressBook_Service;
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	| FirstName | LastName | Address      | City     | State       | Zip    | PhoneN
+	um   | EmailId                 |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	| Abhi      | Jadhav   | Karnik_Nagar | Solapur  | Maharashtra | 413006 | 981234
+	5670 | jeet.abhi@gmail.com     |
+	| Anjali    | Shinde   | Swami_Chowk  | Akkalkot | Maharashtra | 413216 | 998877
+	6655 | anjali.shinde@gmail.com |
+	| Anuradha  | Salunkhe | Avanti_nagar | Solapur  | Maharashtra | 411018 | 887766
+	5544 | anu.salunkhe@gmail.com  |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	3 rows in set (0.03 sec)
+	
+	
+	
+	
+	/*UC-6 = Ability to Retrieve Person belonging to a City or State from the Address Book*/
+	
+	
+	
+	mysql> SELECT CITY,State FROM AddressBook_Service;
+	+----------+-------------+
+	| CITY     | State       |
+	+----------+-------------+
+	| Solapur  | Maharashtra |
+	| Akkalkot | Maharashtra |
+	| Solapur  | Maharashtra |
+	+----------+-------------+
+	3 rows in set (0.00 sec)
+	
+	
+	mysql> SELECT FirstName,CITY,State FROM AddressBook_Service;
+	+-----------+----------+-------------+
+	| FirstName | CITY     | State       |
+	+-----------+----------+-------------+
+	| Abhi      | Solapur  | Maharashtra |
+	| Anjali    | Akkalkot | Maharashtra |
+	| Anuradha  | Solapur  | Maharashtra |
+	+-----------+----------+-------------+
+	3 rows in set (0.00 sec)
+	
+	
+	
+	
+	/*UC-7 = Ability to understand the size of address book by City and State*/
+	
+	
+	
+	mysql> SELECT City,State, COUNT(*) FROM AddressBook_Service;
+	+---------+-------------+----------+
+	| City    | State       | COUNT(*) |
+	+---------+-------------+----------+
+	| Solapur | Maharashtra |        3 |
+	+---------+-------------+----------+
+	1 row in set (0.04 sec)
+	
+	
+	mysql> SELECT City,State, COUNT(*) FROM AddressBook_Service GROUP BY City;
+	+----------+-------------+----------+
+	| City     | State       | COUNT(*) |
+	+----------+-------------+----------+
+	| Solapur  | Maharashtra |        2 |
+	| Akkalkot | Maharashtra |        1 |
+	+----------+-------------+----------+
+	2 rows in set (0.05 sec)
+	
+	
+	
+	
+	/*UC-8 = Ability to retrieve entries sorted alphabetically by Person’s name for a given city */
+	
+	
+	
+	mysql> SELECT * FROM AddressBook_Service ORDER BY FirstName ASC;
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	| FirstName | LastName | Address      | City     | State       | Zip    | PhoneN
+	um   | EmailId                 |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	| Abhi      | Jadhav   | Karnik_Nagar | Solapur  | Maharashtra | 413006 | 981234
+	5670 | jeet.abhi@gmail.com     |
+	| Anjali    | Shinde   | Swami_Chowk  | Akkalkot | Maharashtra | 413216 | 998877
+	6655 | anjali.shinde@gmail.com |
+	| Anuradha  | Salunkhe | Avanti_nagar | Solapur  | Maharashtra | 411018 | 887766
+	5544 | anu.salunkhe@gmail.com  |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	3 rows in set (0.00 sec)
+	
+	
+	mysql> SELECT * FROM AddressBook_Service ORDER BY FirstName DESC;
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	| FirstName | LastName | Address      | City     | State       | Zip    | PhoneN
+	um   | EmailId                 |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	| Anuradha  | Salunkhe | Avanti_nagar | Solapur  | Maharashtra | 411018 | 887766
+	5544 | anu.salunkhe@gmail.com  |
+	| Anjali    | Shinde   | Swami_Chowk  | Akkalkot | Maharashtra | 413216 | 998877
+	6655 | anjali.shinde@gmail.com |
+	| Abhi      | Jadhav   | Karnik_Nagar | Solapur  | Maharashtra | 413006 | 981234
+	5670 | jeet.abhi@gmail.com     |
+	+-----------+----------+--------------+----------+-------------+--------+-------
+	-----+-------------------------+
+	3 rows in set (0.00 sec)
+	
+	
+	
+	
+	/*UC-9 = Ability to identify each Address Book with name and Type.
+		 - Here the type could Family, Friends, Profession, etc
+		 - Alter Address Book to add name and type
+	*/
+	
+	
+	
+	mysql> ALTER TABLE AddressBook_Service ADD COLUMN Type varchar(20) after LastNam
+	e;
+	Query OK, 0 rows affected (2.90 sec)
+	Records: 0  Duplicates: 0  Warnings: 0
+	
+	
+	mysql> SELECT * FROM AddressBook_Service;
+	+-----------+----------+------+--------------+----------+-------------+--------+
+	------------+-------------------------+
+	| FirstName | LastName | Type | Address      | City     | State       | Zip    |
+	 PhoneNum   | EmailId                 |
+	+-----------+----------+------+--------------+----------+-------------+--------+
+	------------+-------------------------+
+	| Abhi      | Jadhav   | NULL | Karnik_Nagar | Solapur  | Maharashtra | 413006 |
+	 9812345670 | jeet.abhi@gmail.com     |
+	| Anjali    | Shinde   | NULL | Swami_Chowk  | Akkalkot | Maharashtra | 413216 |
+	 9988776655 | anjali.shinde@gmail.com |
+	| Anuradha  | Salunkhe | NULL | Avanti_nagar | Solapur  | Maharashtra | 411018 |
+	 8877665544 | anu.salunkhe@gmail.com  |
+	+-----------+----------+------+--------------+----------+-------------+--------+
+	------------+-------------------------+
+	3 rows in set (0.00 sec)
+	
+	
+	mysql> UPDATE Addressbook_Service SEt Type='Family' WHERE FirstName='Anjali' OR
+	FirstName='Anuradha' OR FirstName='Abhi';
+	Query OK, 3 rows affected (0.10 sec)
+	Rows matched: 3  Changed: 3  Warnings: 0
+	
+	
+	
+	
+	
+	/*UC-10 = Ability to get number of contact persons i.e. count by type */
+	
+	
+	
+	mysql> SELECT Type,COUNT(*) FROM AddressBook_Service GROUP BY Type;
+	+--------+----------+
+	| Type   | COUNT(*) |
+	+--------+----------+
+	| Family |        3 |
+	+--------+----------+
+	1 row in set (0.06 sec)
+	
+	
+	mysql> SELECT PhoneNum, COUNT(*) FROM AddressBook_Service GROUP BY Type;
+	+------------+----------+
+	| PhoneNum   | COUNT(*) |
+	+------------+----------+
+	| 9812345670 |        3 |
+	| 7788991122 |        1 |
+	+------------+----------+
+	2 rows in set (0.00 sec)
+	
+	
+	mysql> SELECT PhoneNum Type, COUNT(*) FROM AddressBook_Service GROUP BY Type;
+	+------------+----------+
+	| Type       | COUNT(*) |
+	+------------+----------+
+	| 9812345670 |        3 |
+	| 7788991122 |        1 |
+	+------------+----------+
+	2 rows in set, 1 warning (0.00 sec)
+	
+	
+	mysql> SELECT PhoneNum, Type, COUNT(*) FROM AddressBook_Service GROUP BY Type;
+	+------------+--------+----------+
+	| PhoneNum   | Type   | COUNT(*) |
+	+------------+--------+----------+
+	| 9812345670 | Family |        3 |
+	| 7788991122 | Myself |        1 |
+	+------------+--------+----------+
+	2 rows in set (0.00 sec)
+	
+	
+	
+	
+	
+	/*UC-11 = Ability to add person to both Friend and Family */
+	
+	
+	
+	mysql> INSERT INTO AddressBook_Service
+	    -> (FirstName, LastName, Address, City, State, Zip, PhoneNum, EmailId)
+	    -> VALUES
+	    -> ('Dipali', 'Magare', 'Amalner', 'Amalner', 'Maharashtra', 425401, 7788991122,
+	 ‘dipali.magare@gmail.com');
+	Query OK, 1 row affected (0.08 sec)
+	
+	
+	mysql> SELECT * FROM AddressBook_Service;
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	| FirstName | LastName | Type   | Address      | City     | State       | Zip
+	 | PhoneNum   | EmailId                 |
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	| Abhi      | Jadhav   | Family | Karnik_Nagar | Solapur  | Maharashtra | 413006
+	 | 9812345670 | jeet.abhi@gmail.com     |
+	| Anjali    | Shinde   | Family | Swami_Chowk  | Akkalkot | Maharashtra | 413216
+	 | 9988776655 | anjali.shinde@gmail.com |
+	| Anuradha  | Salunkhe | Family | Avanti_nagar | Solapur  | Maharashtra | 411018
+	 | 8877665544 | anu.salunkhe@gmail.com  |
+	| Diapli   | Magare  | NULL   | Amalner      | Amalner     | Maharashtra | 425401
+	 | 7788991122 | dipali.magare@gmail.com |
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	4 rows in set (0.05 sec)
+	
+	
+	mysql> UPDATE AddressBook_Service SET Type='Myself' WHERE FirstName='Dipali';
+	Query OK, 1 row affected (0.09 sec)
+	Rows matched: 1  Changed: 1  Warnings: 0
+	
+	
+	mysql> SELECT * FROM AddressBook_Service;
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	| FirstName | LastName | Type   | Address      | City     | State       | Zip
+	 | PhoneNum   | EmailId                 |
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	| Abhi      | Jadhav   | Family | Karnik_Nagar | Solapur  | Maharashtra | 413006
+	 | 9812345670 | jeet.abhi@gmail.com     |
+	| Anjali    | Shinde   | Family | Swami_Chowk  | Akkalkot | Maharashtra | 413216
+	 | 9988776655 | anjali.shinde@gmail.com |
+	| Anuradha  | Salunkhe | Family | Avanti_nagar | Solapur  | Maharashtra | 411018
+	 | 8877665544 | anu.salunkhe@gmail.com  |
+	| Diapli   | Magare  | Myself   | Amalner      | Amalner     | Maharashtra | 425401
+	 | 7788991122 | aparna.jadhav@gmail.com |
+	+-----------+----------+--------+--------------+----------+-------------+-------
+	-+------------+-------------------------+
+	4 rows in set (0.00 sec)
+	
+	
+	mysql>
+
